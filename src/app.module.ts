@@ -8,9 +8,11 @@ import { UsersModule } from './users/users.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DashboardGroupsModule } from './dashboard-groups/dashboard-groups.module';
 import { WidgetModule } from './widget/widget.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     AuthModule,
     UsersModule,
     CacheModule.register(),
@@ -41,6 +43,6 @@ import { WidgetModule } from './widget/widget.module';
     WidgetModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ConfigService],
 })
 export class AppModule {}
